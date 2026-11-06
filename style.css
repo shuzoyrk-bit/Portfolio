@@ -1,0 +1,81 @@
+/* オモコロ風カスタムスタイル & アニメーション */
+
+:root {
+  --font-dela: 'Dela Gothic One', sans-serif;
+  --font-rounded: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.font-dela {
+  font-family: var(--font-dela);
+}
+
+body {
+  font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* 上部ティッカーアニメーション */
+.marquee-track {
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ポップなドット・ストライプ背景パターン */
+.comic-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.12) 15%, transparent 16%);
+  background-size: 16px 16px;
+}
+
+/* コミックボタンの立体エフェクト */
+.comic-btn {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  user-select: none;
+}
+
+.comic-btn:hover {
+  transform: translate(-2px, -2px);
+}
+
+.comic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000 !important;
+}
+
+/* フィルターボタンのアクティブ状態 */
+.active-filter {
+  background-color: #facc15 !important; /* Tailwind yellow-400 */
+  transform: translate(-1px, -1px);
+}
+
+/* カードのホバー時微細アニメーション */
+.work-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 横スクロールバーの非表示（スマホカテゴリフィルター用） */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 4px;
+}

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>オモシロ PORTFOLIO | 全人類待望のWebエンジニア制作実績</title>
+  
+  <!-- Google Fonts: Dela Gothic One & M PLUS Rounded 1c & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-amber-50 text-neutral-900 font-sans selection:bg-yellow-300 selection:text-black min-h-screen flex flex-col">
+
+  <!-- 最上部ティッカーバー（スマホでもスムーズに流れる） -->
+  <aside aria-label="ニュース速報" class="bg-black text-yellow-300 text-[11px] sm:text-xs md:text-sm py-1.5 px-2 overflow-hidden border-b-2 border-black font-bold">
+    <div class="marquee-track flex whitespace-nowrap">
+      <span class="mx-3">⚡【速報】全人類待望のポートフォリオがついに公開！</span>
+      <span class="mx-3">🚀 お仕事・案件のご相談は年中無休で受付中！</span>
+      <span class="mx-3">💡 好きな言葉は「定時退社」と「オールグリーン」！</span>
+      <span class="mx-3">📱 スマホ対応完了！寝転がりながらでも読めます！</span>
+      <span class="mx-3">⚡【速報】全人類待望のポートフォリオがついに公開！</span>
+      <span class="mx-3">🚀 お仕事・案件のご相談は年中無休で受付中！</span>
+    </div>
+  </aside>
+
+  <!-- メインヘッダー -->
+  <header class="bg-yellow-400 border-b-4 border-black sticky top-0 z-40 shadow-[0_4px_0_0_#000]">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2">
+      <!-- ロゴ -->
+      <a href="#" class="flex items-center gap-1.5 sm:gap-2 group shrink-0">
+        <div class="bg-red-600 text-white font-dela text-xl sm:text-2xl md:text-3xl px-2.5 py-0.5 sm:py-1 border-2 sm:border-3 border-black shadow-[2px_2px_0_0_#000] sm:shadow-[3px_3px_0_0_#000] rotate-[-2deg] group-hover:rotate-[2deg] transition-transform">
+          オモシロ
+        </div>
+        <div class="flex flex-col">
+          <span class="font-dela text-base sm:text-xl md:text-2xl tracking-wider text-black leading-none">ポートフォリオ</span>
+          <span class="text-[9px] sm:text-[10px] font-bold tracking-tighter bg-black text-white px-1 mt-0.5 self-start">WEB CREATOR</span>
+        </div>
+      </a>
+
+      <!-- デスクトップ用ナビゲーション -->
+      <nav class="hidden md:flex items-center gap-2 lg:gap-3 font-dela text-sm">
+        <a href="#feature" class="comic-btn bg-white hover:bg-yellow-100 text-black px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs">
+          特集
+        </a>
+        <a href="#works" class="comic-btn bg-red-500 hover:bg-red-400 text-white px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs">
+          制作実績
+        </a>
+        <a href="#skills" class="comic-btn bg-cyan-400 hover:bg-cyan-300 text-black px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs">
+          スキル
+        </a>
+        <a href="#profile" class="comic-btn bg-lime-400 hover:bg-lime-300 text-black px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs">
+          私について
+        </a>
+        <a href="#contact" class="comic-btn bg-black hover:bg-neutral-800 text-yellow-300 px-3.5 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs flex items-center gap-1">
+          <i class="fa-solid fa-paper-plane"></i> 相談する
+        </a>
+      </nav>
+
+      <!-- スマホ用メニューボタン（ハンバーガー） -->
+      <div class="flex items-center gap-2 md:hidden">
+        <a href="#contact" class="comic-btn bg-black text-yellow-300 text-xs font-dela px-2.5 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000]">
+          相談
+        </a>
+        <button id="mobileMenuBtn" aria-label="メニューを開く" class="comic-btn bg-white text-black w-9 h-9 border-2 border-black shadow-[2px_2px_0_0_#000] flex items-center justify-center text-lg">
+          <i id="menuIcon" class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- スマホ用ドロワーメニュー -->
+    <div id="mobileMenu" class="hidden md:hidden bg-yellow-300 border-t-2 border-black px-4 py-3 shadow-[0_4px_0_0_#000]">
+      <div class="grid grid-cols-2 gap-2 font-dela text-xs">
+        <a href="#feature" class="mobile-nav-link comic-btn bg-white text-center py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] rounded">
+          📰 特集記事
+        </a>
+        <a href="#works" class="mobile-nav-link comic-btn bg-red-500 text-white text-center py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] rounded">
+          🏆 制作実績
+        </a>
+        <a href="#skills" class="mobile-nav-link comic-btn bg-cyan-400 text-black text-center py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] rounded">
+          ⚔️ スキル・装備
+        </a>
+        <a href="#profile" class="mobile-nav-link comic-btn bg-lime-400 text-black text-center py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] rounded">
+          👨‍💻 制作者について
+        </a>
+        <a href="#contact" class="mobile-nav-link col-span-2 comic-btn bg-black text-yellow-300 text-center py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] rounded">
+          ✉️ お仕事の相談・お問い合わせ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 浮遊イイネ応援ボタン（スマホでも邪魔にならず押しやすい配置） -->
+  <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-center">
+    <div id="cheerBubble" class="bg-white border-2 border-black px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold mb-1.5 shadow-[2px_2px_0_0_#000] animate-bounce pointer-events-none select-none">
+      応援！🎉
+    </div>
+    <button id="cheerBtn" aria-label="応援イイネボタン" class="comic-btn bg-red-500 hover:bg-red-600 active:scale-95 text-white font-dela w-13 h-13 sm:w-16 sm:h-16 p-2 rounded-full border-3 sm:border-4 border-black shadow-[3px_3px_0_0_#000] sm:shadow-[4px_4px_0_0_#000] flex flex-col items-center justify-center transition-transform">
+      <i class="fa-solid fa-thumbs-up text-base sm:text-xl"></i>
+      <span id="cheerCount" class="text-[10px] sm:text-xs mt-0.5 leading-none">999+</span>
+    </button>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-8 flex-1 w-full">
+
+    <!-- トップ特集枠（オモコロのトップ記事風） -->
+    <section id="feature" class="mb-8 sm:mb-12">
+      <div class="relative bg-white border-3 sm:border-4 border-black p-3.5 sm:p-6 shadow-[5px_5px_0_0_#000] sm:shadow-[8px_8px_0_0_#000] rounded-xl overflow-hidden">
+        
+        <!-- 記事風タグバッジ -->
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3">
+          <span class="bg-red-600 text-white font-dela px-2 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs border-2 border-black shadow-[2px_2px_0_0_#000] -rotate-1">
+            本日の超特大特集
+          </span>
+          <span class="bg-yellow-300 text-black font-bold px-2 py-0.5 text-[10px] sm:text-xs border border-black">
+            #Webエンジニア
+          </span>
+          <span class="bg-cyan-200 text-black font-bold px-2 py-0.5 text-[10px] sm:text-xs border border-black hidden xs:inline-block">
+            #開発秘話
+          </span>
+          <span class="text-[10px] sm:text-xs text-neutral-500 font-bold ml-auto">
+            <i class="fa-regular fa-clock"></i> 2026.11.06 公開
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center">
+          <!-- 左側：アイキャッチ画像風バナー -->
+          <div class="lg:col-span-7">
+            <div class="relative bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 border-3 sm:border-4 border-black rounded-lg p-4 sm:p-6 shadow-[3px_3px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] text-center overflow-hidden comic-pattern">
+              <!-- トゲトゲバッジ -->
+              <div class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-red-600 text-white font-dela text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-black rotate-12 shadow-[2px_2px_0_0_#000] animate-pulse">
+                必読！
+              </div>
+              <div class="text-yellow-100 font-dela text-sm sm:text-xl tracking-widest drop-shadow-[2px_2px_0_#000]">
+                【検証企画】
+              </div>
+              <h1 class="font-dela text-xl sm:text-3xl md:text-4xl text-white my-2 sm:my-3 leading-tight drop-shadow-[2px_2px_0_#000] sm:drop-shadow-[3px_3px_0_#000]">
+                「真面目なポートフォリオを<br>オモコロ風にしたら<br><span class="text-yellow-300 underline decoration-black decoration-wavy">採用担当に刺さるのか？</span>」
+              </h1>
+              <div class="inline-block bg-white text-black font-bold text-[11px] sm:text-sm px-3 sm:px-4 py-1 border-2 border-black rounded-full shadow-[2px_2px_0_0_#000]">
+                結論：技術力とユーモアで面接の空気が和らぐ
+              </div>
+
+              <!-- キャッチーなイラスト風バナー -->
+              <div class="mt-3 sm:mt-4 flex justify-center items-center gap-3 sm:gap-4 text-3xl sm:text-5xl">
+                <span class="hover:scale-125 transition-transform cursor-pointer">💻</span>
+                <span class="font-dela text-xl sm:text-2xl text-white drop-shadow-[2px_2px_0_#000]">×</span>
+                <span class="hover:scale-125 transition-transform cursor-pointer">💡</span>
+                <span class="font-dela text-xl sm:text-2xl text-white drop-shadow-[2px_2px_0_#000]">=</span>
+                <span class="hover:scale-125 transition-transform cursor-pointer">🎉</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右側：記事リード文・作者情報 -->
+          <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-3 sm:space-y-4">
+            <div>
+              <div class="flex items-center gap-3 mb-2.5 sm:mb-3 pb-2.5 sm:pb-3 border-b-2 border-dashed border-neutral-300">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-yellow-400 border-2 border-black rounded-full overflow-hidden flex items-center justify-center font-dela text-xl sm:text-2xl shadow-[2px_2px_0_0_#000] shrink-0">
+                  😎
+                </div>
+                <div>
+                  <div class="text-[10px] sm:text-xs text-neutral-500 font-bold">執筆・開発・検証</div>
+                  <div class="font-dela text-base sm:text-lg">Webエンジニア / クリエイター</div>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed font-medium">
+                こんにちは。コードを書いて日々バグと戦うエンジニアです。
+                「ポートフォリオは無難で綺麗なのが一番」という常識を疑い、
+                <strong>技術力は100%本気、世界観はオモコロテイスト</strong>でお届けします。
+              </p>
+            </div>
+
+            <div class="bg-yellow-100 border-2 border-black p-2.5 sm:p-3 rounded-lg text-xs space-y-1 shadow-[2px_2px_0_0_#000]">
+              <div class="font-bold flex items-center gap-1 text-black">
+                <i class="fa-solid fa-bullhorn text-red-500"></i> このページで分かること：
+              </div>
+              <ul class="list-disc list-inside text-neutral-800 space-y-0.5 text-[11px] sm:text-xs">
+                <li>どんなフロントエンド/バックエンド技術が使えるか</li>
+                <li>これまでに制作したWebアプリ・サービスの全貌</li>
+                <li>スマホでもストレスなく動くレスポンシブな設計</li>
+              </ul>
+            </div>
+
+            <a href="#works" class="comic-btn w-full bg-red-500 hover:bg-red-400 text-white font-dela text-center py-2.5 sm:py-3 border-3 border-black shadow-[3px_3px_0_0_#000] sm:shadow-[4px_4px_0_0_#000] rounded-lg text-sm sm:text-base">
+              実績記事を読みに行く <i class="fa-solid fa-arrow-down ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 制作実績（WORKS）セクション：オモコロの記事一覧風 -->
+    <section id="works" class="mb-10 sm:mb-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-4 sm:mb-6 pb-2 border-b-3 sm:border-b-4 border-black">
+        <div>
+          <span class="bg-red-500 text-white font-dela px-2 py-0.5 text-[10px] sm:text-xs border-2 border-black shadow-[2px_2px_0_0_#000] inline-block mb-1">
+            FEATURED WORKS
+          </span>
+          <h2 class="font-dela text-2xl sm:text-3xl md:text-4xl text-black">
+            制作実績（過去の武勇伝）
+          </h2>
+        </div>
+        
+        <!-- カテゴリフィルター（スマホでは横スクロールで快適操作） -->
+        <div id="filterContainer" class="flex overflow-x-auto pb-1 sm:pb-0 gap-1.5 sm:gap-2 text-xs font-dela no-scrollbar">
+          <button data-filter="all" class="filter-btn active-filter shrink-0 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] bg-yellow-400">
+            すべて
+          </button>
+          <button data-filter="web" class="filter-btn shrink-0 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] bg-white hover:bg-yellow-100">
+            Webサービス
+          </button>
+          <button data-filter="tool" class="filter-btn shrink-0 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] bg-white hover:bg-yellow-100">
+            便利ツール
+          </button>
+          <button data-filter="fun" class="filter-btn shrink-0 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] bg-white hover:bg-yellow-100">
+            おもしろ系
+          </button>
+        </div>
+      </div>
+
+      <!-- 実績カードグリッド -->
+      <div id="worksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+        <!-- 作品カード 1 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="web">
+          <div class="relative bg-gradient-to-tr from-sky-400 to-indigo-600 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              WEB APP
+            </span>
+            <span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              人気作
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-cart-shopping text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">爆速ECプラットフォーム</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              Next.js / TypeScript / Tailwind CSS / Stripe
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                【検証】深夜テンションでカート落ちゼロを目指す超快適ECサイトを作ったらどうなる？
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                表示速度0.8秒切りを実現。極限までユーザーの購入ハードルを削ぎ落とし、気づいた時には決済が完了しているUI設計。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 3週間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="爆速ECプラットフォーム"
+                data-subtitle="【検証】深夜テンションでカート落ちゼロを目指す超快適ECサイト"
+                data-tech="Next.js, TypeScript, Tailwind CSS, Stripe, Supabase"
+                data-desc="表示速度を極限までチューニングしたヘッドレスECフロントエンド。Server Componentsを活用したSSR/SSGのハイブリッド構成により、PageSpeed Insightsでモバイル99点を達成しました。Stripe決済連携やカート状態の最適化を実装。"
+                data-link="https://github.com"
+                data-icon="fa-cart-shopping">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 作品カード 2 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="tool">
+          <div class="relative bg-gradient-to-tr from-emerald-400 to-teal-700 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              TOOL
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-stopwatch text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">ポモドーロ褒め殺しタイマー</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              Vue.js / Web Audio API / Pinia
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                作業するたびにAI音声が異常な熱量で褒めちぎってくれる過保護タイマー
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                「キーボード叩いてるだけで偉すぎる！」など、25分作業するごとに無条件肯定サウンドが鳴り響く自己肯定感ブーストツール。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 5日間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="ポモドーロ褒め殺しタイマー"
+                data-subtitle="作業するたびにAI音声が異常な熱量で褒めちぎってくれる過保護タイマー"
+                data-tech="Vue 3, Web Audio API, Tailwind CSS, LocalStorage"
+                data-desc="Web Audio APIを活用したリアルタイム音声合成＆再生システム。集中時間と休憩時間の切り替えをアニメーションとダイナミックサウンドでサポート。モチベーションが枯渇したデスクワーカーのための救済アプリ。"
+                data-link="https://github.com"
+                data-icon="fa-stopwatch">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 作品カード 3 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="fun">
+          <div class="relative bg-gradient-to-tr from-pink-500 to-rose-600 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              FUNNY
+            </span>
+            <span class="absolute top-2 right-2 bg-purple-600 text-white text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              怪作
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-ghost text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">言い訳ジェネレーター3000</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              React / Gemini API / Framer Motion
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                【AI活用】遅刻したときの「宇宙的規模の不可抗力」を1秒で生成するマシーン
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                「タイムパラドックスが生じたため10分遅れます」など、角が立ちすぎて逆に怒られない奇跡の言い訳をLLMが瞬時に考案。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 1週間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="言い訳ジェネレーター3000"
+                data-subtitle="【AI活用】遅刻したときの宇宙的規模の不可抗力を1秒で生成するマシーン"
+                data-tech="React, Gemini API, Express, Tailwind CSS"
+                data-desc="プロンプトエンジニアリングを駆使して、絶妙に不条理で笑えるビジネス言い訳を生成するAIツール。ワンクリックでのクリップボードコピー機能や、Slackへの即時通知Webhook機能を備えています。"
+                data-link="https://github.com"
+                data-icon="fa-ghost">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 作品カード 4 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="web">
+          <div class="relative bg-gradient-to-tr from-violet-600 to-purple-800 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              WEB APP
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-comments text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">リアルタイム匿名目安箱</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              WebSocket / Node.js / React / Docker
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                社内の不満を打ち込むとピクセルアートの花火になって爆散する癒やしアプリ
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                WebSocketを使った双方向通信。誰も傷つけずに言いたいことを叫べる治安維持型コミュニケーション基盤。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 2週間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="リアルタイム匿名目安箱"
+                data-subtitle="社内の不満を打ち込むとピクセルアートの花火になって爆散する癒やしアプリ"
+                data-tech="Socket.io, Node.js, Canvas API, React"
+                data-desc="Socket.ioを活用した超低遅延リアルタイム通信システム。投稿されたメッセージをCanvas APIでパーティクル分解し花火演出として描画。負荷テストで同時接続1,000クライアントの処理を実証済み。"
+                data-link="https://github.com"
+                data-icon="fa-comments">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 作品カード 5 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="tool">
+          <div class="relative bg-gradient-to-tr from-amber-400 to-orange-600 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              CLI TOOL
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-terminal text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">Git Commit 煽りチェッカー</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              Go言語 / Git Hook / CLI
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                「fix」「wip」などの雑コミットを検知して全力で説教してくるGoツール
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                チームの治安を守るために開発。コミットメッセージが短いとターミナル全体が真っ赤に点滅して反省を促す。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 3日間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="Git Commit 煽りチェッカー"
+                data-subtitle="「fix」「wip」などの雑コミットを検知して全力で説教してくるGoツール"
+                data-tech="Go, Git Hooks, ANSI escape code"
+                data-desc="pre-commitフックとして動作するクロスプラットフォームCLIツール。Conventional Commitsの命名規則に準拠しているかを正規表現で検証し、違反時に愉快な警告を表示してコミットを阻止します。"
+                data-link="https://github.com"
+                data-icon="fa-terminal">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 作品カード 6 -->
+        <article class="work-card bg-white border-3 sm:border-4 border-black rounded-xl overflow-hidden shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex flex-col" data-category="fun">
+          <div class="relative bg-gradient-to-tr from-lime-400 to-green-600 h-40 sm:h-48 border-b-3 sm:border-b-4 border-black flex items-center justify-center p-4 overflow-hidden group">
+            <span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] sm:text-xs font-dela px-2 py-0.5 border border-black shadow-[1px_1px_0_0_#000]">
+              GAME
+            </span>
+            <div class="text-center text-white transform group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-gamepad text-4xl sm:text-5xl mb-2 drop-shadow-[2px_2px_0_#000]"></i>
+              <div class="font-dela text-base sm:text-lg drop-shadow-[2px_2px_0_#000]">無限定時ダッシュ</div>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 bg-black/80 text-yellow-300 text-[10px] sm:text-[11px] font-bold px-2 py-1 text-center truncate">
+              Phaser 3 / TypeScript / WebGL
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-dela text-sm sm:text-base mb-1.5 sm:mb-2 leading-snug hover:text-red-600 cursor-pointer">
+                17時59分59秒から始まる！上司の呼び止めを回避して退勤するランゲーム
+              </h3>
+              <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed mb-3">
+                「ちょっと今いい？」の弾幕をジャンプで避けながらタイムカード機を目指す、現代社会人の心拍数を跳ね上げる2Dアクション。
+              </p>
+            </div>
+            <div class="pt-2.5 border-t-2 border-dashed border-neutral-300 flex items-center justify-between">
+              <span class="text-[10px] sm:text-xs font-bold text-neutral-500">制作: 10日間</span>
+              <button class="open-modal-btn font-dela text-[11px] sm:text-xs bg-yellow-400 hover:bg-yellow-300 px-3 py-1.5 border-2 border-black shadow-[2px_2px_0_0_#000] active:scale-95 transition-transform"
+                data-title="無限定時ダッシュ"
+                data-subtitle="17時59分59秒から始まる！上司の呼び止めを回避して退勤するランゲーム"
+                data-tech="Phaser.js, TypeScript, Vite, WebGL"
+                data-desc="ブラウザで手軽に遊べる軽量2Dエンドレスランナー。スマートフォンタッチ操作とキーボード両対応。物理エンジンとスプライトアニメーションを最適化し60fps張り付きの滑らかな動作を実現。"
+                data-link="https://github.com"
+                data-icon="fa-gamepad">
+                詳細を見る <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- インタラクティブミニコーナー：【今日の開発アイディア生成器】 -->
+    <section class="mb-10 sm:mb-14">
+      <div class="bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 border-3 sm:border-4 border-black p-4 sm:p-6 rounded-2xl shadow-[5px_5px_0_0_#000] sm:shadow-[6px_6px_0_0_#000] relative overflow-hidden">
+        <div class="absolute top-1 right-2 text-5xl sm:text-6xl text-black/10 select-none font-dela pointer-events-none">
+          SLOT
+        </div>
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="bg-black text-yellow-300 font-dela text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Interactive Toy
+          </span>
+          <h3 class="font-dela text-xl sm:text-2xl md:text-3xl mt-1.5 mb-2 text-black leading-snug">
+            🎲 今日のWeb開発アイディア無責任ルーレット
+          </h3>
+          <p class="text-[11px] sm:text-xs md:text-sm text-neutral-800 font-bold mb-4">
+            ボタンを押すと、作れそうで誰も作らない絶妙なアイディアが生成されます。
+          </p>
+
+          <div class="bg-white border-2 sm:border-3 border-black p-3 sm:p-4 rounded-xl shadow-[3px_3px_0_0_#000] sm:shadow-[4px_4px_0_0_#000] min-h-[80px] sm:min-h-[90px] flex items-center justify-center mb-4">
+            <p id="ideaDisplay" class="font-dela text-sm sm:text-lg md:text-xl text-neutral-800 leading-normal">
+              「ボタンを押してアイディアを抽選してね！」
+            </p>
+          </div>
+
+          <button id="spinBtn" class="comic-btn bg-red-600 hover:bg-red-500 active:scale-95 text-white font-dela text-xs sm:text-base px-5 sm:px-6 py-2.5 sm:py-3 border-2 sm:border-3 border-black shadow-[3px_3px_0_0_#000] sm:shadow-[4px_4px_0_0_#000] rounded-xl inline-flex items-center gap-2">
+            <i class="fa-solid fa-dice text-base sm:text-xl"></i> スロットを回す（無料）
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 保有スキル一覧（装備品カタログ風） -->
+    <section id="skills" class="mb-10 sm:mb-14">
+      <div class="mb-4 sm:mb-6 pb-2 border-b-3 sm:border-b-4 border-black">
+        <span class="bg-cyan-400 text-black font-dela px-2 py-0.5 text-[10px] sm:text-xs border-2 border-black shadow-[2px_2px_0_0_#000] inline-block mb-1">
+          SKILL & TECH STACK
+        </span>
+        <h2 class="font-dela text-2xl sm:text-3xl md:text-4xl text-black">
+          技術スタック・装備品リスト
+        </h2>
+        <p class="text-[11px] sm:text-xs md:text-sm text-neutral-600 font-bold mt-1">
+          現場で叩き上げられた、頼れる武器と防具たちのスペック紹介です。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+
+        <!-- フロントエンド -->
+        <div class="bg-white border-3 sm:border-4 border-black rounded-xl p-4 sm:p-5 shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000]">
+          <div class="flex items-center gap-2 mb-3.5 pb-2 border-b-2 sm:border-b-3 border-black">
+            <span class="text-xl sm:text-2xl">🎨</span>
+            <h3 class="font-dela text-base sm:text-lg text-black">フロントエンド</h3>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>HTML5 / CSS3 / Tailwind</span>
+                <span class="text-red-600 font-dela">Lv.95</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-yellow-400 h-full border-r-2 border-black" style="width: 95%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">呼吸をするようにレスポンシブコーディングが可能。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>JavaScript / TypeScript</span>
+                <span class="text-red-600 font-dela">Lv.90</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-yellow-400 h-full border-r-2 border-black" style="width: 90%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">型安全に守られた平穏な開発をこよなく愛する。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>React / Next.js / Vue.js</span>
+                <span class="text-red-600 font-dela">Lv.88</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-yellow-400 h-full border-r-2 border-black" style="width: 88%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">SPAからSSRまで要件に応じて自在に組み上げ。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- バックエンド・クラウド -->
+        <div class="bg-white border-3 sm:border-4 border-black rounded-xl p-4 sm:p-5 shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000]">
+          <div class="flex items-center gap-2 mb-3.5 pb-2 border-b-2 sm:border-b-3 border-black">
+            <span class="text-xl sm:text-2xl">⚙️</span>
+            <h3 class="font-dela text-base sm:text-lg text-black">バックエンド / 基盤</h3>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>Node.js / Express</span>
+                <span class="text-red-600 font-dela">Lv.85</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-cyan-400 h-full border-r-2 border-black" style="width: 85%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">API構築、リアルタイム通信、バッチ処理など何でも。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>PostgreSQL / MySQL / Supabase</span>
+                <span class="text-red-600 font-dela">Lv.80</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-cyan-400 h-full border-r-2 border-black" style="width: 80%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">正規化とインデックスを効かせた安心設計。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>Docker / Git / GitHub</span>
+                <span class="text-red-600 font-dela">Lv.82</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-cyan-400 h-full border-r-2 border-black" style="width: 82%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">GitHub PagesデプロイやCI/CDの自動化も対応。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- その他・人間性スキル -->
+        <div class="bg-white border-3 sm:border-4 border-black rounded-xl p-4 sm:p-5 shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000]">
+          <div class="flex items-center gap-2 mb-3.5 pb-2 border-b-2 sm:border-b-3 border-black">
+            <span class="text-xl sm:text-2xl">🧠</span>
+            <h3 class="font-dela text-base sm:text-lg text-black">人間力・特性</h3>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>納期への執念・防衛力</span>
+                <span class="text-red-600 font-dela">Lv.99</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-lime-400 h-full border-r-2 border-black" style="width: 99%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">約束したスケジュールは何が何でも死守します。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>わかりやすい報連相</span>
+                <span class="text-red-600 font-dela">Lv.92</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-lime-400 h-full border-r-2 border-black" style="width: 92%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">専門用語をかみ砕いて誰にでも親切丁寧に説明。</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>バグへの嗅覚と執念</span>
+                <span class="text-red-600 font-dela">Lv.94</span>
+              </div>
+              <div class="w-full bg-neutral-200 h-2.5 sm:h-3 border-2 border-black rounded-full overflow-hidden">
+                <div class="bg-lime-400 h-full border-r-2 border-black" style="width: 94%"></div>
+              </div>
+              <p class="text-[10px] sm:text-[11px] text-neutral-600 mt-0.5">「動かない原因」を突き止めるまで粘り強く解決。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- プロフィール（ライター紹介風） -->
+    <section id="profile" class="mb-10 sm:mb-14">
+      <div class="bg-white border-3 sm:border-4 border-black rounded-2xl p-4 sm:p-8 shadow-[5px_5px_0_0_#000] sm:shadow-[6px_6px_0_0_#000]">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6 pb-2.5 sm:pb-3 border-b-2 sm:border-b-3 border-black">
+          <div class="flex items-center gap-2">
+            <span class="bg-lime-400 text-black font-dela px-2 py-0.5 text-[10px] sm:text-xs border-2 border-black shadow-[2px_2px_0_0_#000]">
+              ABOUT ME
+            </span>
+            <h2 class="font-dela text-xl sm:text-2xl md:text-3xl text-black">
+              制作者プロフィール
+            </h2>
+          </div>
+          <span class="text-[10px] sm:text-xs font-bold text-neutral-500">
+            ID: OMOCORO_ENGINEER_2026
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <!-- アバター風イラスト枠 -->
+          <div class="md:col-span-4 flex flex-col items-center text-center">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-tr from-yellow-300 via-amber-400 to-orange-400 border-3 sm:border-4 border-black rounded-2xl shadow-[4px_4px_0_0_#000] sm:shadow-[5px_5px_0_0_#000] flex items-center justify-center text-6xl sm:text-7xl select-none mb-3 rotate-[-3deg] hover:rotate-0 transition-transform">
+              👨‍💻
+            </div>
+            <div class="font-dela text-lg sm:text-xl text-black">あなたの名前 / クリエイター名</div>
+            <div class="text-[11px] sm:text-xs font-bold text-neutral-500 mt-0.5">Web Engineer / Full Stack Explorer</div>
+
+            <!-- ステータス一覧 -->
+            <div class="w-full mt-3 sm:mt-4 bg-yellow-50 border-2 border-black p-2.5 sm:p-3 rounded-lg text-left text-[11px] sm:text-xs space-y-1">
+              <div><strong class="text-black">生息地:</strong> インターネットの奥地</div>
+              <div><strong class="text-black">好物:</strong> 綺麗なコード・熱いラーメン</div>
+              <div><strong class="text-black">弱点:</strong> 急な仕様変更・日曜日の夜</div>
+            </div>
+          </div>
+
+          <!-- 詳細テキスト -->
+          <div class="md:col-span-8 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed text-neutral-800">
+            <div class="bg-yellow-200/60 border-l-4 border-black p-2.5 sm:p-3 font-bold text-black text-xs sm:text-sm">
+              「触って気持ちいいWebサイト」と「堅牢で保守しやすい裏側」の両立を目指しています。
+            </div>
+
+            <p>
+              Web制作・Webアプリケーション開発を行っています。
+              最新のフロントエンド技術を取り入れつつ、ユーザーが思わずクスッと笑ったり、直感的に操作できるインタラクションの設計が得意です。
+            </p>
+
+            <p>
+              趣味で変なWebツールを作ったり、個人開発サービスをローンチしてはSNSで反響を観察しています。
+              一人称視点での問題解決と、チーム開発での円滑なコミュニケーションを大切にしています。
+            </p>
+
+            <!-- 略歴タイムライン -->
+            <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t-2 border-dashed border-neutral-300">
+              <h4 class="font-dela text-xs sm:text-sm mb-2 text-black flex items-center gap-1">
+                <i class="fa-solid fa-timeline text-amber-500"></i> 生存記録（略歴）
+              </h4>
+              <ul class="text-[11px] sm:text-xs space-y-2 border-l-2 border-black pl-3 ml-2">
+                <li class="relative">
+                  <div class="absolute -left-[17px] top-1 w-2 h-2 rounded-full bg-red-500 border border-black"></div>
+                  <span class="font-bold">2022年:</span> Web技術の面白さに目覚め、独学でプログラミングとデザインを開始。
+                </li>
+                <li class="relative">
+                  <div class="absolute -left-[17px] top-1 w-2 h-2 rounded-full bg-yellow-400 border border-black"></div>
+                  <span class="font-bold">2024年:</span> 実案件での受託開発やチームでのWebサービスローンチを経験。
+                </li>
+                <li class="relative">
+                  <div class="absolute -left-[17px] top-1 w-2 h-2 rounded-full bg-cyan-400 border border-black"></div>
+                  <span class="font-bold">現在:</span> さらなる高みを目指し、日々新しい技術と面白いアイディアを検証中！
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ・相談セクション -->
+    <section id="contact" class="mb-10 sm:mb-14">
+      <div class="bg-neutral-900 text-white border-3 sm:border-4 border-black rounded-2xl p-4 sm:p-10 shadow-[6px_6px_0_0_#000] sm:shadow-[8px_8px_0_0_#000] relative overflow-hidden">
+        <!-- 背景のポップな装飾 -->
+        <div class="absolute -bottom-6 -right-6 text-7xl sm:text-9xl text-white/5 font-dela select-none pointer-events-none">
+          MAIL
+        </div>
+
+        <div class="max-w-2xl mx-auto">
+          <div class="text-center mb-6 sm:mb-8">
+            <span class="bg-red-600 text-yellow-300 font-dela text-[10px] sm:text-xs px-2.5 py-1 border border-yellow-300 shadow-[2px_2px_0_0_#ffe600] inline-block mb-2">
+              CONTACT ME
+            </span>
+            <h2 class="font-dela text-2xl sm:text-3xl md:text-4xl text-yellow-300 drop-shadow-[2px_2px_0_#000]">
+              お仕事・ご相談はこちら！
+            </h2>
+            <p class="text-[11px] sm:text-xs md:text-sm text-neutral-300 mt-2 font-medium">
+              Web制作、フロントエンド開発、変な企画の相談など、お気軽にお問い合わせください。<br class="hidden sm:inline">
+              原則24時間以内に光の速さで返信いたします。
+            </p>
+          </div>
+
+          <!-- お問い合わせフォーム -->
+          <form id="contactForm" class="space-y-3.5 sm:space-y-4">
+            <div>
+              <label class="block font-dela text-xs text-yellow-300 mb-1">
+                お名前 / 貴社名 <span class="bg-red-600 text-white text-[9px] px-1 ml-1 rounded">必須</span>
+              </label>
+              <input type="text" required placeholder="例：匿名希望の富豪"
+                class="w-full bg-neutral-800 text-white border-2 border-neutral-600 focus:border-yellow-400 focus:bg-neutral-700 p-2.5 rounded-lg text-base outline-none transition-colors">
+            </div>
+
+            <div>
+              <label class="block font-dela text-xs text-yellow-300 mb-1">
+                メールアドレス <span class="bg-red-600 text-white text-[9px] px-1 ml-1 rounded">必須</span>
+              </label>
+              <input type="email" required placeholder="example@domain.com"
+                class="w-full bg-neutral-800 text-white border-2 border-neutral-600 focus:border-yellow-400 focus:bg-neutral-700 p-2.5 rounded-lg text-base outline-none transition-colors">
+            </div>
+
+            <div>
+              <label class="block font-dela text-xs text-yellow-300 mb-1">
+                ご相談種別
+              </label>
+              <select class="w-full bg-neutral-800 text-white border-2 border-neutral-600 focus:border-yellow-400 focus:bg-neutral-700 p-2.5 rounded-lg text-base outline-none transition-colors">
+                <option>Webサイト・LP制作の依頼</option>
+                <option>フロントエンド開発の相談</option>
+                <option>面白いアイディアを一緒に形にしたい</option>
+                <option>ただ褒めたい・励ましたい</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-dela text-xs text-yellow-300 mb-1">
+                お問い合わせ内容 <span class="bg-red-600 text-white text-[9px] px-1 ml-1 rounded">必須</span>
+              </label>
+              <textarea rows="4" required placeholder="「こういうサイトを作りたい」「予算感を知りたい」などお気軽にどうぞ！"
+                class="w-full bg-neutral-800 text-white border-2 border-neutral-600 focus:border-yellow-400 focus:bg-neutral-700 p-2.5 rounded-lg text-base outline-none transition-colors"></textarea>
+            </div>
+
+            <button type="submit" class="comic-btn w-full bg-yellow-400 hover:bg-yellow-300 text-black font-dela text-sm sm:text-base py-3 sm:py-3.5 border-3 border-black shadow-[3px_3px_0_0_#ffe600] sm:shadow-[4px_4px_0_0_#ffe600] rounded-xl flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i> 送信する（気持ちが伝わります）
+            </button>
+          </form>
+
+          <div id="formSuccessMessage" class="hidden mt-4 p-3.5 bg-green-900 border-2 border-green-400 text-green-200 text-center rounded-xl font-dela text-xs sm:text-sm">
+            🎉 送信が完了しました！メッセージありがとうございます！
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 作品詳細モーダルウィンドウ（スマホ全画面対応） -->
+  <div id="workModal" class="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-3 sm:p-4 hidden opacity-0 transition-opacity duration-200">
+    <div class="bg-white border-3 sm:border-4 border-black rounded-2xl max-w-xl w-full max-h-[85vh] overflow-y-auto shadow-[6px_6px_0_0_#000] sm:shadow-[10px_10px_0_0_#000] p-4 sm:p-6 relative">
+      <button id="closeModalBtn" aria-label="閉じる" class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-red-600 text-white w-8 h-8 rounded-full border-2 border-black font-dela flex items-center justify-center hover:scale-110 active:scale-95 transition-transform text-sm">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4 pb-2.5 sm:pb-3 border-b-2 sm:border-b-3 border-black pr-8">
+        <div id="modalIconContainer" class="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-300 border-2 border-black rounded-lg flex items-center justify-center text-xl sm:text-2xl shadow-[2px_2px_0_0_#000] shrink-0">
+          <i id="modalIcon" class="fa-solid fa-laptop-code"></i>
+        </div>
+        <div>
+          <span class="bg-black text-yellow-300 text-[9px] sm:text-[10px] font-dela px-1.5 py-0.5">DETAIL REPORT</span>
+          <h3 id="modalTitle" class="font-dela text-base sm:text-xl text-black leading-snug">作品タイトル</h3>
+        </div>
+      </div>
+
+      <p id="modalSubtitle" class="font-dela text-xs sm:text-sm text-red-600 mb-3 leading-snug"></p>
+
+      <div class="bg-neutral-100 border-2 border-black p-2.5 sm:p-3 rounded-lg mb-3 sm:mb-4">
+        <div class="text-[10px] sm:text-xs font-bold text-neutral-500 mb-0.5">使用技術 / スタック：</div>
+        <div id="modalTech" class="font-bold text-[11px] sm:text-xs text-neutral-800"></div>
+      </div>
+
+      <div class="text-xs sm:text-sm leading-relaxed text-neutral-700 mb-5 space-y-2">
+        <p id="modalDesc"></p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="comic-btn flex-1 bg-yellow-400 hover:bg-yellow-300 text-black text-center font-dela py-2.5 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs sm:text-sm flex items-center justify-center gap-1">
+          <i class="fa-brands fa-github"></i> コード / デモを見る
+        </a>
+        <button id="closeModalBottomBtn" class="comic-btn bg-neutral-200 hover:bg-neutral-300 text-black font-dela px-4 py-2 border-2 border-black shadow-[2px_2px_0_0_#000] text-xs sm:text-sm">
+          閉じる
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="bg-black text-white border-t-3 sm:border-t-4 border-black py-8 sm:py-10 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <span class="bg-red-600 text-white font-dela text-lg sm:text-xl px-2 py-0.5 border-2 border-white -rotate-2">
+            オモシロ
+          </span>
+          <span class="font-dela text-lg sm:text-xl text-yellow-300">ポートフォリオ</span>
+        </div>
+        <p class="text-[11px] sm:text-xs text-neutral-400 mt-2 font-medium">
+          笑いと実用性を兼ね備えたWeb開発をお届けします。無断転載・大歓迎（※褒めてください）。
+        </p>
+      </div>
+
+      <!-- SNSリンク風 -->
+      <div class="flex items-center gap-3">
+        <a href="#" aria-label="X (Twitter)" class="w-9 h-9 sm:w-10 sm:h-10 bg-yellow-400 text-black border-2 border-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-[2px_2px_0_0_#fff]">
+          <i class="fa-brands fa-x-twitter text-base sm:text-lg"></i>
+        </a>
+        <a href="#" aria-label="GitHub" class="w-9 h-9 sm:w-10 sm:h-10 bg-purple-500 text-white border-2 border-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-[2px_2px_0_0_#fff]">
+          <i class="fa-brands fa-github text-base sm:text-lg"></i>
+        </a>
+        <a href="#" aria-label="YouTube" class="w-9 h-9 sm:w-10 sm:h-10 bg-red-600 text-white border-2 border-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-[2px_2px_0_0_#fff]">
+          <i class="fa-brands fa-youtube text-base sm:text-lg"></i>
+        </a>
+      </div>
+    </div>
+    <div class="text-center text-[10px] sm:text-[11px] text-neutral-500 mt-6 sm:mt-8">
+      © 2026 OMOSHIRO PORTFOLIO. All Rights & Laughs Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
